@@ -1,0 +1,31 @@
+name: SyntaxHighlightApp
+options:
+  bundleIdPrefix: dev.hossain.syntaxhighlight
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+packages:
+  ShikiTokenSDK:
+    path: ../ShikiTokenSDK
+
+targets:
+  SyntaxHighlightApp:
+    type: application
+    platform: iOS
+    sources:
+      - Sources
+    info:
+      path: Sources/Info.plist
+      properties:
+        UILaunchScreen: {}
+    dependencies:
+      - package: ShikiTokenSDK
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.hossain.syntaxhighlight
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.9"
