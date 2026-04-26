@@ -101,6 +101,9 @@ Then add `"ShikiTokenSDK"` to your target's dependencies.
 - Xcode 15+
 - Swift 5.9+
 
-## License
+---
 
-MIT
+> [!NOTE]
+> This project was developed with the assistance of AI coding agents (GitHub Copilot).
+> Code, architecture, tests, and documentation were generated or refined through
+> AI-assisted pair programming. Review accordingly before using in production.
