@@ -101,33 +101,32 @@ struct DualThemeScreen: View {
                 ProgressView("Highlighting...")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             case .loaded(let response):
-                ScrollView {
-                    VStack(spacing: 0) {
-                        if showSideBySide {
-                            sideBySideView(tokens: response.tokens)
-                        } else {
-                            CodeHighlightView(tokens: response.tokens)
-                                .frame(maxWidth: .infinity, alignment: .topLeading)
-                        }
-                        Divider()
-                        HStack {
-                            Text(colorScheme == .dark ? "Dark mode" : "Light mode")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                            Spacer()
-                        }
-                        .padding(.horizontal)
-                        .padding(.vertical, 4)
-                        MetricsBar(
-                            networkMs: viewModel.elapsedMs,
-                            serverMs: response.debug?.totalMs,
-                            lines: response.tokens.count,
-                            characters: response.tokens.flatMap { $0 }.reduce(0) { $0 + $1.text.count }
-                        )
+                VStack(spacing: 0) {
+                    if showSideBySide {
+                        sideBySideView(tokens: response.tokens)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else {
+                        CodeHighlightView(tokens: response.tokens)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                            .refreshable {
+                                await viewModel.highlight()
+                            }
                     }
-                }
-                .refreshable {
-                    await viewModel.highlight()
+                    Divider()
+                    HStack {
+                        Text(colorScheme == .dark ? "Dark mode" : "Light mode")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 4)
+                    MetricsBar(
+                        networkMs: viewModel.elapsedMs,
+                        serverMs: response.debug?.totalMs,
+                        lines: response.tokens.count,
+                        characters: response.tokens.flatMap { $0 }.reduce(0) { $0 + $1.text.count }
+                    )
                 }
             case .error(let error):
                 VStack(spacing: 12) {

@@ -74,21 +74,19 @@ struct HighlightScreen: View {
                 ProgressView("Highlighting...")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             case .loaded(let response):
-                ScrollView {
-                    VStack(spacing: 0) {
-                        CodeHighlightView(tokens: response.tokens)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                        Divider()
-                        MetricsBar(
-                            networkMs: viewModel.elapsedMs,
-                            serverMs: response.debug?.totalMs,
-                            lines: response.tokens.count,
-                            characters: response.tokens.flatMap { $0 }.reduce(0) { $0 + $1.text.count }
-                        )
-                    }
-                }
-                .refreshable {
-                    await viewModel.highlight()
+                VStack(spacing: 0) {
+                    CodeHighlightView(tokens: response.tokens)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                        .refreshable {
+                            await viewModel.highlight()
+                        }
+                    Divider()
+                    MetricsBar(
+                        networkMs: viewModel.elapsedMs,
+                        serverMs: response.debug?.totalMs,
+                        lines: response.tokens.count,
+                        characters: response.tokens.flatMap { $0 }.reduce(0) { $0 + $1.text.count }
+                    )
                 }
             case .error(let error):
                 VStack(spacing: 12) {

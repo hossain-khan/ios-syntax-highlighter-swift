@@ -36,7 +36,7 @@ public struct CodeHighlightView: View {
     public var body: some View {
         ScrollView([.horizontal, .vertical]) {
             Text(attributedString)
-                .font(.system(.body, design: .monospaced))
+                .font(.system(size: 12, design: .monospaced))
                 .textSelection(.enabled)
                 .padding()
         }
