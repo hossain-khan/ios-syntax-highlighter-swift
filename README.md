@@ -11,6 +11,16 @@ This is the iOS counterpart to [android-syntax-highlighter-compose](https://gith
 | `ShikiTokenSDK/` | Swift Package — async/await API client + SwiftUI `CodeHighlightView` |
 | `SyntaxHighlightApp/` | Demo app exercising all SDK features |
 
+
+### Demo Screenshots
+
+| Test Different APIs | Single Theme API | Doual Theme API |
+| ---- | ---- | ---- |
+| <img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-04-25 at 21 37 42" src="https://github.com/user-attachments/assets/7f6c005e-7203-4c9b-a30c-9e97b58d2204" /> | <img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-04-25 at 21 37 59" src="https://github.com/user-attachments/assets/44cc73c1-a00a-4d8f-b7c9-844521f13ad7" /> | <img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-04-25 at 21 38 56" src="https://github.com/user-attachments/assets/b394d877-21a0-4c5c-8c4c-722bef1c749b" /> |
+
+
+
+
 ## SDK Usage
 
 ```swift
