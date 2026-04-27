@@ -4,6 +4,13 @@ A showcase iOS app demonstrating syntax highlighting powered by the [Shiki Token
 
 This is the iOS counterpart to [android-syntax-highlighter-compose](https://github.com/hossain-khan/android-syntax-highlighter-compose).
 
+
+> [!NOTE]
+> This project was developed with the assistance of AI coding agents (GitHub Copilot).
+> Code, architecture, tests, and documentation were generated or refined through
+> AI-assisted pair programming. Review accordingly before using in production.
+
+
 ## Structure
 
 | Component | Description |
@@ -100,10 +107,3 @@ Then add `"ShikiTokenSDK"` to your target's dependencies.
 - iOS 16+ / macOS 13+
 - Xcode 15+
 - Swift 5.9+
-
----
-
-> [!NOTE]
-> This project was developed with the assistance of AI coding agents (GitHub Copilot).
-> Code, architecture, tests, and documentation were generated or refined through
-> AI-assisted pair programming. Review accordingly before using in production.
